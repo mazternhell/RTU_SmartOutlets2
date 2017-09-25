@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:columnCount="4"
+    android:rowCount="8"
+    android:layout_gravity="center"
+    tools:context="smartoutlets.elecdesignworks.ph.smartoutlets.MainActivity"
+    >
+
+
+    <TextView
+        android:id="@+id/detection_status"
+        android:text="NO MOTION DETECTED"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:layout_columnSpan="4"
+        android:layout_gravity="fill"
+        android:paddingBottom="40sp"
+        />
+
+    <TextView
+        android:text="Smart Switch"
+        android:layout_columnSpan="2"
+        android:textSize="20sp"
+        android:layout_gravity="fill"
+        android:textAlignment="center"
+        android:paddingBottom="20sp"
+        android:paddingTop="20sp"
+        />
+
+    <TextView
+        android:text="Device Status"
+        android:textSize="20sp"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill"
+        android:textAlignment="center"
+        android:paddingTop="20sp"
+        />
+
+    <Switch
+        android:id="@+id/togglebtn_1"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill"
+        android:text="1"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/out1_status"
+        android:text="Device plugged in"
+        android:layout_columnSpan="2"
+        android:textSize="20sp"
+        android:layout_gravity="fill"
+        android:textAlignment="center"
+        android:paddingTop="10sp"
+        />
+
+    <Switch
+        android:id="@+id/togglebtn_2"
+        android:text="2"
+        android:textSize="20sp"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill"/>
+
+    <TextView
+        android:id="@+id/out2_status"
+        android:text="Device plugged in"
+        android:layout_columnSpan="2"
+        android:textSize="20sp"
+        android:paddingTop="10sp"
+        android:layout_gravity="fill"
+        android:textAlignment="center"
+        />
+
+    <Switch
+        android:id="@+id/togglebtn_3"
+        android:text="3"
+        android:textSize="20sp"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill"/>
+
+    <TextView
+        android:id="@+id/out3_status"
+        android:text="Device plugged in"
+        android:layout_columnSpan="2"
+        android:textSize="20sp"
+        android:layout_gravity="fill"
+        android:textAlignment="center"
+        android:paddingTop="10sp"
+        />
+
+    <TextView
+        android:id="@+id/push_status"
+        android:text="Push Status"
+        android:layout_columnSpan="4"
+        android:textSize="20sp"
+        android:layout_gravity="fill"
+        android:textAlignment="center"
+        android:paddingTop="30sp"
+        />
+
+</GridLayout>
+
