@@ -40,11 +40,18 @@
         android:paddingTop="20sp"
         />
 
-    <Switch
-        android:id="@+id/togglebtn_1"
-        android:layout_columnSpan="2"
+    <Button
+        android:id="@+id/btn_1"
+        android:layout_columnSpan="1"
         android:layout_gravity="fill"
-        android:text="1"
+        android:text="ON 1"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_2"
+        android:layout_columnSpan="1"
+        android:layout_gravity="fill"
+        android:text="OFF 1"
         android:textSize="20sp" />
 
     <TextView
@@ -57,12 +64,19 @@
         android:paddingTop="10sp"
         />
 
-    <Switch
-        android:id="@+id/togglebtn_2"
-        android:text="2"
+    <Button
+        android:id="@+id/btn_3"
+        android:text="ON 2"
         android:textSize="20sp"
-        android:layout_columnSpan="2"
+        android:layout_columnSpan="1"
         android:layout_gravity="fill"/>
+
+    <Button
+        android:id="@+id/btn_4"
+        android:layout_columnSpan="1"
+        android:layout_gravity="fill"
+        android:text="OFF 2"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/out2_status"
@@ -74,12 +88,18 @@
         android:textAlignment="center"
         />
 
-    <Switch
-        android:id="@+id/togglebtn_3"
-        android:text="3"
+    <Button
+        android:id="@+id/btn_5"
+        android:text="ON 3"
         android:textSize="20sp"
-        android:layout_columnSpan="2"
-        android:layout_gravity="fill"/>
+        android:layout_columnSpan="1"/>
+
+    <Button
+        android:id="@+id/btn_6"
+        android:layout_columnSpan="1"
+        android:text="OFF 3"
+        android:textSize="20sp" />
+
 
     <TextView
         android:id="@+id/out3_status"
