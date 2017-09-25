@@ -1,5 +1,6 @@
 package smartoutlets.elecdesignworks.ph.smartoutlets;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -32,11 +33,9 @@ public class MainActivity extends AppCompatActivity{
 
     String push_success;
     String field_json;
-    String one = "1";
-    String zero = "0";
-    String entry_id_json;
+    int result;
 
-    Integer count=0;
+    int count=1;
     private MainApplication mainApplication;
 
     @Override
@@ -63,60 +62,75 @@ public class MainActivity extends AppCompatActivity{
             public void run() {
 
                 //    pullData(final String results,final String field,final String read_api_key, String channel, String url)
-                if (count==1) {
-                    pullData("1", "4LZPK4K4DNTMROS1", "336369", "https://api.thingspeak.com/channels/"); //load 1 sensor
 
-                    push_status.setText("Load 1 " + field_json);
-/*
-                    if (field_json.compareTo(zero)==0) {
-                        out1_status.setText("Device Unplugged");
-                    }
-                    if (field_json.compareTo(one)==0) {
-                        out1_status.setText("Device plugged in");
-                    }
- */               }
-                if (count==2){
-                    pullData("1", "S2CEY98ZBPJZC5MN","336370","https://api.thingspeak.com/channels/"); //load 2 sensor
+                if (count==1){
 
-                    push_status.setText("Load 2 " + field_json);
+                    pullData("1", "KDJJ75KTBLQZKDKM","336368","https://api.thingspeak.com/channels/"); //LOAD 1 sensor
 
-                    if (field_json == "0") {
-                        out2_status.setText("Device Unplugged");
+//                    push_status.setText("Movement " + field_json);
+
+                    if (result==0) {
+                        detection_status.setText("NO MOTION DETECTED");
+                        detection_status.setTextColor(Color.RED);
                     }
-                    if (field_json == "1") {
-                        out2_status.setText("Device plugged in");
+                    if (result==1) {
+                        detection_status.setText("MOTION DETECTED");
+                        detection_status.setTextColor(Color.GREEN);
+
                     }
 
                 }
-                if (count==3){
-                    pullData("1", "4JZQUJ74J32CG0B2","336371","https://api.thingspeak.com/channels/"); //load 3 sensor
 
-                    push_status.setText("Load 3 " + field_json);
+                if (count==2) {
+                    pullData("1", "4LZPK4K4DNTMROS1", " 336369", "https://api.thingspeak.com/channels/"); //LOAD 2 Sensor
 
-                    if (field_json == "0") {
-                        out3_status.setText("Device Unplugged");
+//                    push_status.setText("Load 1 " + field_json);
+
+                    if (result==0) {
+                        out1_status.setText("Device Unplugged");
+                        out1_status.setTextColor(Color.RED);
                     }
-                    if (field_json == "1") {
-                        out3_status.setText("Device plugged in");
+                    if (result==1) {
+                        out1_status.setText("Device plugged in");
+                        out1_status.setTextColor(Color.GREEN);
+
+                    }
+                }
+                if (count==3){
+                    pullData("1", "S2CEY98ZBPJZC5MN","336370","https://api.thingspeak.com/channels/"); //LOAD 3 sensor
+
+  //                  push_status.setText("Load 2 " + field_json);
+
+                    if (result==0) {
+                        out2_status.setText("Device Unplugged");
+                        out2_status.setTextColor(Color.RED);
+                    }
+                    if (result==1) {
+                        out2_status.setText("Device plugged in");
+                        out2_status.setTextColor(Color.GREEN);
+
                     }
 
                 }
                 if (count>3){
-                    pullData("1", "KDJJ75KTBLQZKDKM","336368","https://api.thingspeak.com/channels/"); //microwave sensor
+                    pullData("1", "4JZQUJ74J32CG0B2","336371","https://api.thingspeak.com/channels/"); //Motion sensor
 
-                    push_status.setText("Movement " + field_json);
+//                    push_status.setText("Load 3 " + field_json);
 
-                    if (field_json == "0") {
-                        detection_status.setText("Device Unplugged");
+                    if (result==0) {
+                        out3_status.setText("Device Unplugged");
+                        out3_status.setTextColor(Color.RED);
                     }
-                    if (field_json == "1") {
-                        detection_status.setText("Device plugged in");
+                    if (result==1) {
+                        out3_status.setText("Device plugged in");
+                        out3_status.setTextColor(Color.GREEN);
+
                     }
                     count=0;
                 }
 
                 count++;
-                handler.postDelayed(this,5000);
+                handler.postDelayed(this,2000);
             }
         };
 
@@ -199,7 +213,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-    private void pullData(final String field,final String read_api_key, String channel, String url) {
+    private void pullData(final String field, final String read_api_key, String channel, String url) {
         String tag_json_obj = "json_obj_req";
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 url + channel + "/fields/" + field + ".json?api_key=" + read_api_key + "&results=1", //just the last result should do
@@ -212,6 +226,7 @@ public class MainActivity extends AppCompatActivity{
                             JSONArray jsonarray = json.getJSONArray("feeds");   //feeds is a JSON array []
                             JSONObject fieldA = jsonarray.getJSONObject(0);
                             field_json = fieldA.getString("field1");
+                            result = Integer.parseInt(field_json);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
